@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-teknistoreapp-dev-01846-authRole",
+      "UnauthRoleArn": "arn:aws:iam::642840133903:role/amplify-teknistoreapp-dev-01846-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::642840133903:role/amplify-teknistoreapp-dev-01846-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-teknistoreapp-dev-01846-deployment",
+      "UnauthRoleName": "amplify-teknistoreapp-dev-01846-unauthRole",
+      "StackName": "amplify-teknistoreapp-dev-01846",
+      "StackId": "arn:aws:cloudformation:eu-west-1:642840133903:stack/amplify-teknistoreapp-dev-01846/55bc9040-6bf6-11eb-926b-02bfe32853e5",
+      "AmplifyAppId": "d69r6szafw85z"
+    }
+  }
+}
