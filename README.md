@@ -18,3 +18,7 @@ Teknistore is an inventory application to keep track of your show equipment.
 * [ ] Authentication
 * [ ] Simple CRUD
 * [ ] Unit tests
+
+## Run tests
+
+`npx cypress open`
