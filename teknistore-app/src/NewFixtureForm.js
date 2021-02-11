@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const NewFixtureForm = () => {
+const NewFixtureForm = ({ onSend }) => {
     const [inputText, setInputText] = useState('');
 
     const handleTextChange = event => {
@@ -8,6 +8,7 @@ const NewFixtureForm = () => {
     };
 
     const handleCreate = () => {
+        onSend(inputText);
         setInputText('');
     };
 
