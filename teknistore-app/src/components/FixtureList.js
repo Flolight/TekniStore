@@ -1,10 +1,11 @@
 import React from 'react'
+import Fixture from './Fixture'
 
 const FixtureList = ({ data }) => {
     return (
-        <ul>
-            {data.map(fixture => <li key={fixture}>{fixture}</li>)}
-        </ul>
+        <div class="flex flex-wrap justify-center">
+            {data.map(fixture => <Fixture fixture={fixture} />)}
+        </div>
     );
 }
 
