@@ -10,6 +10,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import Stock from "./views/Stock"
 import Gigs from "./views/Gigs"
 import Profile from "./views/Profile"
+import NavBar from './components/NavBar';
 Amplify.configure(awsExports);
 
 ReactDOM.render(
