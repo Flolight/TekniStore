@@ -1,9 +1,8 @@
-import logo from './logo.svg';
 import React, { useState, useEffect } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
-import NewFixtureForm from './NewFixtureForm'
-import FixtureList from './FixtureList';
-import SideBar from './SideBar'
+import NewFixtureForm from '../components/NewFixtureForm'
+import FixtureList from '../components/FixtureList';
+import NavBar from '../components/NavBar'
 
 function Dashboard() {
   const [fixtures, setFixtures] = useState([]);
@@ -13,9 +12,9 @@ function Dashboard() {
   };
   return (
     <>
-        <SideBar />
-        <NewFixtureForm onSend={handleCreate} />
-        <FixtureList data={fixtures} />
+      <NavBar />
+      <NewFixtureForm onSend={handleCreate} />
+      <FixtureList data={fixtures} />
     </>
   );
 }
