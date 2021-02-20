@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import NavBar from "../components/NavBar";
 
-import NewFixtureForm from '../components/NewFixtureForm'
+import NewObjectForm from '../components/NewObjectForm'
 import FixtureList from '../components/FixtureList';
 import Container from "../components/Container";
 
@@ -34,8 +34,6 @@ const Stock = () => {
                 updateModal={updateModal}
                 showModal={showModal}
             />
-
-            <NewFixtureForm onSend={handleCreate} />
             <FixtureList data={fixtures} />
         </>
     );
