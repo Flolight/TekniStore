@@ -8,10 +8,18 @@ import Container from "../components/Container";
 
 const Stock = () => {
     const [fixtures, setFixtures] = useState([]);
-    
+    const [showModal, setShowModal] = React.useState(false);
 
+    const updateModal= (nextState) => {
+        setShowModal(nextState);
+    };
     const handleCreate = newFixture => {
       setFixtures([newFixture, ...fixtures]);
+    };
+    const onSubmit = event => {
+        event.preventDefault();
+        handleCreate(event.target.name.value);
+        updateModal(false);
     };
     
     return (
@@ -19,7 +27,9 @@ const Stock = () => {
             <NavBar />
             <h2>The stock</h2>
             <Container 
-                onSubmit={handleCreate}
+                onSubmit={onSubmit}
+                updateModal={updateModal}
+                showModal={showModal}
             />
 
             <NewFixtureForm onSend={handleCreate} />

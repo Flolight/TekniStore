@@ -27,14 +27,14 @@ const Modal = (props) => {
                     </button>
                     </div>
                     {/*body*/}
-                    <form onSubmit={() => props.onSubmit("test")}>
+                    <form onSubmit={(event) => props.onSubmit(event)}>
                         <div className="relative p-6 flex-auto">
                         
                             <div>
                                 <label>
                                     Name
                                 </label>
-                                <input type="text" className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Object name" />
+                                <input type="text" name="name" className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Object name" />
                             </div>
                             <div>
                                 <label>

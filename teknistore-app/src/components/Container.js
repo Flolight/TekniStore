@@ -3,14 +3,10 @@ import Modal from "./Modal";
 import TriggerButton from "./TriggerButton";
 
 const Container = (props) => {
-    const [showModal, setShowModal] = React.useState(false);
     const triggerText = "New object";
         const onSave = (newObject) => {
         
-        setShowModal(false);
-    }
-    const updateModal= (nextState) => {
-        setShowModal(nextState);
+        props.updateModal(false);
     }
     
     return (
@@ -18,14 +14,14 @@ const Container = (props) => {
             <div className="flex flex-row-reverse">
                 <TriggerButton 
                     triggerText={triggerText}
-                    showModal={updateModal}    
+                    showModal={props.updateModal}    
                 />
                 
             </div>
-            { showModal ? (
+            { props.showModal ? (
                     <>
                         <Modal
-                            closeModal={() => updateModal(false)}
+                            closeModal={() => props.updateModal(false)}
                             onSubmit={props.onSubmit}
                         />
                     </>
