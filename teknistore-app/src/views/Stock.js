@@ -18,7 +18,10 @@ const Stock = () => {
     };
     const onSubmit = event => {
         event.preventDefault();
-        handleCreate(event.target.name.value);
+        handleCreate({
+            name: event.target.name.value,
+            description: event.target.description.value,
+        });
         updateModal(false);
     };
     

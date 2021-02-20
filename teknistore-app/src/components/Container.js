@@ -4,10 +4,6 @@ import TriggerButton from "./TriggerButton";
 
 const Container = (props) => {
     const triggerText = "New object";
-        const onSave = (newObject) => {
-        
-        props.updateModal(false);
-    }
     
     return (
         <>
