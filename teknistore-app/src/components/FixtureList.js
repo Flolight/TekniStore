@@ -13,7 +13,7 @@ const FixtureList = (props) => {
                                 <div className="w-full flex flex-row-reverse mr-4">
                                     <button 
                                         className="p-1 ml-auto bg-transparent border-0 text-black opacity-90 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                                        onClick={() => props.displayModal(true, "Update")}
+                                        onClick={() => props.displayModal(true, "Update", fixture)}
                                     >
                                         <span className="bg-transparent text-black opacity-90 h-6 w-6 text-2xl block outline-none focus:outline-none">
                                             <i className="fa fa-edit fa-sm"></i>

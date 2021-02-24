@@ -14,6 +14,7 @@ const Stock = () => {
     const [fixtures, setFixtures] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [modalAction, setModalAction] = useState("");
+    const [currentObject, setCurrentObject] = useState();
 
     useEffect(() => {
         fetchFixtures()
@@ -27,7 +28,8 @@ const Stock = () => {
     } catch (err) { console.log('error fetching fixture') }
     }
 
-    const displayModal= (nextState, action) => {
+    const displayModal= (nextState, action, object) => {
+        setCurrentObject(object||null)
         setModalAction(action)
         setShowModal(nextState);
     };
@@ -52,6 +54,7 @@ const Stock = () => {
             <NavBar />
             <h2>The stock</h2>
             <Container 
+                object={currentObject}
                 action={modalAction}
                 onSubmit={onSubmit}
                 displayModal={displayModal}

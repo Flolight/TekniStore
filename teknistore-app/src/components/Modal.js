@@ -27,7 +27,8 @@ const Modal = (props) => {
                         </span>
                     </button>
                     </div>
-                    <NewObjectForm 
+                    <NewObjectForm
+                        object={props.object}
                         onSubmit={props.onSubmit}
                         closeModal={props.closeModal}
                     />

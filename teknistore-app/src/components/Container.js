@@ -17,6 +17,7 @@ const Container = (props) => {
             { props.showModal ? (
                     <>
                         <Modal
+                            object={props.object}
                             action={props.action}
                             closeModal={() => props.displayModal(false)}
                             onSubmit={props.onSubmit}
