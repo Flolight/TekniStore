@@ -8,10 +8,12 @@ import FixtureList from '../components/FixtureList';
 import Container from "../components/Container";
 import { createFixture } from "../graphql/mutations"
 import { listFixtures } from "../graphql/queries"
+import Modal from "../components/Modal";
 
 const Stock = () => {
     const [fixtures, setFixtures] = useState([]);
-    const [showModal, setShowModal] = React.useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [modalAction, setModalAction] = useState("");
 
     useEffect(() => {
         fetchFixtures()
@@ -25,7 +27,8 @@ const Stock = () => {
     } catch (err) { console.log('error fetching fixture') }
     }
 
-    const updateModal= (nextState) => {
+    const displayModal= (nextState, action) => {
+        setModalAction(action)
         setShowModal(nextState);
     };
     const handleCreate = async newFixture => {
@@ -41,7 +44,7 @@ const Stock = () => {
             name: event.target.name.value,
             description: event.target.description.value,
         });
-        updateModal(false);
+        displayModal(false);
     };
     
     return (
@@ -49,11 +52,12 @@ const Stock = () => {
             <NavBar />
             <h2>The stock</h2>
             <Container 
+                action={modalAction}
                 onSubmit={onSubmit}
-                updateModal={updateModal}
+                displayModal={displayModal}
                 showModal={showModal}
             />
-            <FixtureList data={fixtures} />
+            <FixtureList data={fixtures} displayModal={displayModal} onSubmit={onSubmit} />
         </>
     );
 }
