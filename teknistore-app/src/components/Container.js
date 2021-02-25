@@ -14,7 +14,8 @@ const Container = (props) => {
                 />
                 
             </div>
-            { props.showModal ? (
+            { props.showModal ? 
+                (
                     <>
                         <Modal
                             object={props.object}
