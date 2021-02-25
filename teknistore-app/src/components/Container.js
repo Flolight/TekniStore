@@ -10,14 +10,16 @@ const Container = (props) => {
             <div className="flex flex-row-reverse">
                 <TriggerButton 
                     triggerText={triggerText}
-                    showModal={props.updateModal}    
+                    displayModal={props.displayModal}
                 />
                 
             </div>
             { props.showModal ? (
                     <>
                         <Modal
-                            closeModal={() => props.updateModal(false)}
+                            object={props.object}
+                            action={props.action}
+                            closeModal={() => props.displayModal(false)}
                             onSubmit={props.onSubmit}
                         />
                     </>

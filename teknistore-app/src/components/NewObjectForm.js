@@ -1,30 +1,53 @@
 import React, { useState } from 'react';
 
 const NewObjectForm = (props) => {
-    const [inputText, setInputText] = useState('');
+    let newObject = props.object ? props.object : {
+        name: "name",
+        description: "description"
+    };
+    const [name, setName] = useState(newObject.name);
+    const [description, setDescription] = useState(newObject.description);
 
-    const handleTextChange = event => {
-        setInputText(event.target.value)
+    const handleNameChange = event => {
+        setName(event.target.value)
+    };
+    const handleChange = event => {
+        setName(event.target.value)
     };
 
-    const handleCreate = () => {
-
-        setInputText('');
+    const handleDescription = (event) => {
+        setDescription(event.target.value)
     };
 
     return (
         <>
             {/*body*/}
-            <form onSubmit={(event) => props.onSubmit(event)}>
+            <form onSubmit={(event) => props.onSubmit(event, props.object)}>
                 <div className="relative p-6 flex-auto">
+                    <span>{props.object.id}</span>
                     <div>
                         <label>
                             Name
                         </label>
-                        <input type="text" name="name" className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600" placeholder="Object name" />
+                        <input 
+                            type="text"
+                            name="name"
+                            className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                            placeholder="Object name"
+                            value={name}
+                            onChange={handleChange}
+                            />
                     </div>
                     <div>
-                        <textarea name="description" />
+                        <label>
+                            Description
+                        </label>
+                        <textarea 
+                            name="description" 
+                            value={description}
+                            className="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
+                            onChange={handleChange}
+                             />
                     </div>
                     <div>
                         <label>
@@ -54,7 +77,7 @@ const NewObjectForm = (props) => {
                         style={{ transition: "all .15s ease" }}
                         
                     >
-                        Save Changes
+                        {props.action}
                     </button>
                 </div>
             </form>

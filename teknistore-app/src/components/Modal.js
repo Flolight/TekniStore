@@ -16,7 +16,7 @@ const Modal = (props) => {
                     {/*header*/}
                     <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
                     <h3 className="text-3xl font-semibold">
-                        Create new object
+                        {props.action} object
                     </h3>
                     <button
                         className="p-1 ml-auto bg-transparent border-0 text-black opacity-90 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
@@ -27,7 +27,9 @@ const Modal = (props) => {
                         </span>
                     </button>
                     </div>
-                    <NewObjectForm 
+                    <NewObjectForm
+                        object={props.object}
+                        action={props.action}
                         onSubmit={props.onSubmit}
                         closeModal={props.closeModal}
                     />

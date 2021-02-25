@@ -1,18 +1,22 @@
 import React from 'react'
 import Fixture from './Fixture'
 
-const FixtureList = ({ data }) => {
+const FixtureList = (props) => {
     return (
         <>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-8">
-                {data.map(fixture => {
+                {props.data.map((fixture) => {
                     return (
-                        <>
-                            <div>
-                                <Fixture name={fixture.name} description={fixture.description} key={fixture.name} />
-                            </div>
-                        </>
+                        <div key={fixture.id}>
+                            <Fixture 
+                                displayModal={props.displayModal}
+                                fixture={fixture}
+                                name={fixture.name}
+                                description={fixture.description}
+                                key={fixture.id}
+                                />
+                        </div>
                     ); 
                     })}
             </div>
