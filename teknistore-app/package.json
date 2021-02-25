@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^12.6.3",
     "aws-amplify": "^3.3.18",
     "cypress": "^6.4.0",
+    "qrcode.react": "^1.0.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-router-dom": "^5.2.0",
