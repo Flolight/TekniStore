@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Amplify, { API, graphqlOperation } from 'aws-amplify'
 
 import NavBar from "../components/NavBar";
@@ -6,7 +6,7 @@ import NavBar from "../components/NavBar";
 import NewObjectForm from '../components/NewObjectForm'
 import FixtureList from '../components/FixtureList';
 import Container from "../components/Container";
-import { createFixture } from "../graphql/mutations"
+import { createFixture, updateFixture } from "../graphql/mutations"
 import { listFixtures } from "../graphql/queries"
 import Modal from "../components/Modal";
 
@@ -25,6 +25,7 @@ const Stock = () => {
         const objectData = await API.graphql(graphqlOperation(listFixtures))
         const object = objectData.data.listFixtures.items
         setFixtures(object)
+        console.log(fixtures)
     } catch (err) { console.log('error fetching fixture') }
     }
 
@@ -40,9 +41,47 @@ const Stock = () => {
         }catch(err){console.error('Error creating fixture ')}
       
     };
-    const onSubmit = event => {
+    const handleUpdate = useCallback(async newFixture => {
+        console.log(newFixture)
+        try{
+            setFixtures([newFixture, ...(fixtures.filter(e => e.id !== newFixture.id))]);
+            await API.graphql(graphqlOperation(updateFixture, {input: newFixture}))
+        }catch(err){console.error('Error creating fixture ')}
+      
+    }, []);
+    const onSubmitCreate = event => {
         event.preventDefault();
         handleCreate({
+            name: event.target.name.value,
+            description: event.target.description.value,
+        });
+        displayModal(false);
+    };
+    const onSubmit = (event, object) => {
+        event.preventDefault();
+        console.log(object)
+        const target = {
+            id: object.id,
+            name: event.target.name.value,
+            description: event.target.description.value,
+        }
+        switch(modalAction){
+            case "Create":
+                handleCreate(target);
+                break;
+            case "Update":
+                handleUpdate(target);
+                break;
+            default:
+                break;
+        }
+        displayModal(false);
+    };
+
+    const onSubmitUpdate = event => {
+        event.preventDefault();
+        handleUpdate({
+            id: event.target.name.value,
             name: event.target.name.value,
             description: event.target.description.value,
         });
@@ -60,7 +99,7 @@ const Stock = () => {
                 displayModal={displayModal}
                 showModal={showModal}
             />
-            <FixtureList data={fixtures} displayModal={displayModal} onSubmit={onSubmit} />
+            <FixtureList data={fixtures} displayModal={displayModal} />
         </>
     );
 }
